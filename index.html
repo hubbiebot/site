@@ -1,0 +1,1052 @@
+<!doctype html>
+<html lang="pt-BR" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f5f8f6">
+  <meta name="description" content="Hubbye AI: atendimento inteligente que responde, entende o contexto e qualifica oportunidades 24 horas por dia.">
+  <meta name="robots" content="index, follow">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Hubbye AI | Atendimento inteligente para empresas">
+  <meta property="og:description" content="Transforme conversas em oportunidades com atendimento inteligente, humanizado e disponível 24 horas.">
+  <title>Hubbye AI | Atendimento inteligente para empresas</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath d='M15 48l3-9a21 21 0 1 1 8 8z' fill='none' stroke='%2300a558' stroke-width='7' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M25 31q3.5-5.5 7 0M38 31q3.5-5.5 7 0' fill='none' stroke='%23101914' stroke-width='4' stroke-linecap='round'/%3E%3Cpath d='M49 10l2-5M55 15l4-3M56 22h5' fill='none' stroke='%2300a558' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E">
+  <script>
+    (function () {
+      try {
+        if (localStorage.getItem('hubbye-theme') === 'dark') {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        }
+      } catch (error) {}
+    }());
+  </script>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f5f8f6;
+      --bg-soft: #edf4ef;
+      --surface: #ffffff;
+      --surface-glass: rgba(255, 255, 255, .78);
+      --surface-muted: #f2f6f3;
+      --surface-hover: #f8fbf9;
+      --text: #101914;
+      --text-soft: #536159;
+      --text-faint: #758178;
+      --line: #dce7df;
+      --line-strong: #c8d7cd;
+      --brand: #00a558;
+      --brand-dark: #007b42;
+      --brand-bright: #27c879;
+      --brand-soft: #dcf7e8;
+      --brand-faint: rgba(0, 165, 88, .08);
+      --brand-glow: rgba(0, 165, 88, .2);
+      --danger-soft: #fff0ee;
+      --danger: #d85c4a;
+      --warning-soft: #fff7e5;
+      --warning: #af7416;
+      --shadow-xs: 0 1px 2px rgba(15, 30, 21, .05);
+      --shadow-sm: 0 12px 36px rgba(17, 38, 25, .07);
+      --shadow-md: 0 24px 70px rgba(17, 38, 25, .1);
+      --shadow-lg: 0 32px 90px rgba(10, 30, 18, .16);
+      --header: rgba(245, 248, 246, .82);
+      --radius-sm: 14px;
+      --radius-md: 22px;
+      --radius-lg: 32px;
+      --content: 1200px;
+    }
+
+    html[data-theme="dark"] {
+      color-scheme: dark;
+      --bg: #09100c;
+      --bg-soft: #0d1711;
+      --surface: #111c16;
+      --surface-glass: rgba(17, 28, 22, .8);
+      --surface-muted: #16231b;
+      --surface-hover: #17261d;
+      --text: #eff7f2;
+      --text-soft: #a9b8af;
+      --text-faint: #83928a;
+      --line: #26372d;
+      --line-strong: #35493d;
+      --brand: #37d486;
+      --brand-dark: #5fe3a0;
+      --brand-bright: #75e7ad;
+      --brand-soft: #153d28;
+      --brand-faint: rgba(55, 212, 134, .08);
+      --brand-glow: rgba(55, 212, 134, .18);
+      --danger-soft: #38201e;
+      --danger: #ff9586;
+      --warning-soft: #382d17;
+      --warning: #edbd61;
+      --shadow-xs: 0 1px 2px rgba(0, 0, 0, .18);
+      --shadow-sm: 0 12px 36px rgba(0, 0, 0, .22);
+      --shadow-md: 0 24px 70px rgba(0, 0, 0, .3);
+      --shadow-lg: 0 32px 90px rgba(0, 0, 0, .4);
+      --header: rgba(9, 16, 12, .82);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 92px; }
+    body {
+      margin: 0;
+      min-width: 280px;
+      overflow-x: hidden;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+      transition: background-color .3s ease, color .3s ease;
+    }
+    body.menu-open { overflow: hidden; }
+    a { color: inherit; text-decoration: none; }
+    button, input { font: inherit; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    button { color: inherit; }
+    svg { display: block; max-width: 100%; }
+    h1, h2, h3, h4, p, ul { margin-top: 0; }
+    h1, h2, h3, h4 { text-wrap: balance; }
+    p { text-wrap: pretty; }
+    :focus-visible { outline: 3px solid var(--brand-bright); outline-offset: 3px; }
+    ::selection { color: #fff; background: var(--brand); }
+
+    .skip-link {
+      position: fixed;
+      z-index: 1000;
+      top: 12px;
+      left: 12px;
+      padding: 10px 14px;
+      color: #fff;
+      background: var(--brand-dark);
+      border-radius: 10px;
+      transform: translateY(-160%);
+      transition: transform .2s ease;
+    }
+    .skip-link:focus { transform: translateY(0); }
+
+    .container { width: min(var(--content), calc(100% - 40px)); margin-inline: auto; }
+    .section { position: relative; padding: clamp(78px, 9vw, 120px) 0; }
+    .section--soft { background: var(--bg-soft); }
+    .section--grid {
+      background-image:
+        linear-gradient(var(--brand-faint) 1px, transparent 1px),
+        linear-gradient(90deg, var(--brand-faint) 1px, transparent 1px);
+      background-size: 64px 64px;
+      -webkit-mask-image: linear-gradient(to bottom, transparent, #000 18%, #000 82%, transparent);
+      mask-image: linear-gradient(to bottom, transparent, #000 18%, #000 82%, transparent);
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      margin-bottom: 16px;
+      color: var(--brand-dark);
+      font-size: .75rem;
+      font-weight: 850;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+    .eyebrow::before { content: ""; width: 22px; height: 2px; border-radius: 99px; background: currentColor; }
+    .section-heading { max-width: 760px; margin: 0 auto clamp(42px, 6vw, 64px); text-align: center; }
+    .section-heading--left { margin-inline: 0; text-align: left; }
+    .section-heading h2 {
+      margin-bottom: 16px;
+      font-size: clamp(2.1rem, 5vw, 3.7rem);
+      line-height: 1.04;
+      letter-spacing: -.055em;
+    }
+    .section-heading p { margin-bottom: 0; color: var(--text-soft); font-size: clamp(1rem, 1.6vw, 1.14rem); }
+    .accent { color: var(--brand-dark); }
+    .muted { color: var(--text-soft); }
+
+    .header {
+      position: fixed;
+      z-index: 100;
+      inset: 0 0 auto;
+      background: var(--header);
+      border-bottom: 1px solid transparent;
+      -webkit-backdrop-filter: blur(18px) saturate(140%);
+      backdrop-filter: blur(18px) saturate(140%);
+      transition: border-color .25s ease, box-shadow .25s ease, background-color .3s ease;
+    }
+    .header.scrolled { border-color: var(--line); box-shadow: 0 12px 34px rgba(14, 35, 21, .05); }
+    .nav { min-height: 78px; display: flex; align-items: center; justify-content: space-between; gap: 22px; }
+    .brand { display: inline-flex; align-items: center; gap: 10px; min-width: 0; font-size: 1.38rem; font-weight: 880; letter-spacing: -.045em; white-space: nowrap; }
+    .brand-mark { width: 39px; height: 39px; flex: 0 0 auto; color: var(--brand); }
+    .brand-ai { margin-left: -4px; padding: 3px 7px; color: var(--brand-dark); background: var(--brand-soft); border: 1px solid var(--line); border-radius: 7px; font-size: .61rem; font-weight: 850; letter-spacing: .1em; text-transform: uppercase; }
+    .desktop-nav { display: flex; align-items: center; gap: clamp(18px, 2vw, 30px); margin-left: auto; }
+    .nav-link { position: relative; color: var(--text-soft); font-size: .88rem; font-weight: 720; }
+    .nav-link::after { content: ""; position: absolute; right: 0; bottom: -7px; left: 0; height: 2px; border-radius: 99px; background: var(--brand); transform: scaleX(0); transition: transform .2s ease; }
+    .nav-link:hover { color: var(--text); }
+    .nav-link:hover::after { transform: scaleX(1); }
+    .nav-actions { display: flex; align-items: center; gap: 9px; }
+    .icon-button {
+      width: 43px;
+      height: 43px;
+      display: grid;
+      place-items: center;
+      flex: 0 0 auto;
+      padding: 0;
+      color: var(--text);
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 13px;
+      box-shadow: var(--shadow-xs);
+      cursor: pointer;
+      transition: transform .2s ease, border-color .2s ease, background-color .2s ease;
+    }
+    .icon-button:hover { transform: translateY(-2px); border-color: var(--brand); }
+    .icon-button svg { width: 19px; height: 19px; }
+    .icon-sun, html[data-theme="dark"] .icon-moon { display: none; }
+    html[data-theme="dark"] .icon-sun { display: block; }
+    .menu-toggle { display: none; }
+    .mobile-menu { display: none; }
+
+    .button {
+      min-height: 52px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      max-width: 100%;
+      padding: 13px 22px;
+      border: 1px solid transparent;
+      border-radius: 14px;
+      font-size: .94rem;
+      font-weight: 790;
+      line-height: 1.2;
+      text-align: center;
+      cursor: pointer;
+      transition: transform .2s ease, box-shadow .2s ease, background-color .2s ease, border-color .2s ease;
+    }
+    .button:hover { transform: translateY(-2px); }
+    .button:active { transform: translateY(0) scale(.985); }
+    .button svg { width: 18px; height: 18px; flex: 0 0 auto; transition: transform .2s ease; }
+    .button:hover svg.arrow { transform: translateX(3px); }
+    .button--primary { color: #fff; background: linear-gradient(135deg, var(--brand), #058647); box-shadow: 0 13px 30px var(--brand-glow); }
+    .button--primary:hover { box-shadow: 0 18px 36px var(--brand-glow); }
+    .button--secondary { color: var(--text); background: var(--surface-glass); border-color: var(--line); box-shadow: var(--shadow-xs); }
+    .button--secondary:hover { border-color: var(--brand); background: var(--surface); }
+    .button--ghost { min-height: 44px; padding: 10px 17px; color: var(--text-soft); background: transparent; }
+    .button--ghost:hover { color: var(--text); background: var(--surface-muted); }
+    .button--small { min-height: 43px; padding: 10px 17px; font-size: .86rem; border-radius: 12px; }
+
+    .hero {
+      min-height: 820px;
+      min-height: min(940px, 100svh);
+      display: grid;
+      align-items: center;
+      overflow: hidden;
+      position: relative;
+      isolation: isolate;
+      padding: 142px 0 88px;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      z-index: -2;
+      width: min(72vw, 900px);
+      aspect-ratio: 1;
+      top: -47%;
+      right: -18%;
+      border-radius: 50%;
+      background: radial-gradient(circle, var(--brand-glow) 0, rgba(0, 165, 88, .06) 42%, transparent 70%);
+      animation: breathe 8s ease-in-out infinite alternate;
+      pointer-events: none;
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      z-index: -2;
+      width: 460px;
+      aspect-ratio: 1;
+      left: -250px;
+      bottom: -220px;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      box-shadow: 0 0 0 60px var(--brand-faint), 0 0 0 120px rgba(0, 165, 88, .025);
+      pointer-events: none;
+    }
+    @keyframes breathe { from { transform: scale(.95) translate3d(0, 0, 0); } to { transform: scale(1.07) translate3d(-18px, 16px, 0); } }
+    .hero-grid { display: grid; grid-template-columns: minmax(0, .92fr) minmax(540px, 1.08fr); gap: clamp(50px, 7vw, 94px); align-items: center; }
+    .hero-copy { position: relative; z-index: 2; min-width: 0; }
+    .hero-kicker { display: inline-flex; align-items: center; gap: 9px; margin-bottom: 22px; padding: 8px 12px; color: var(--brand-dark); background: var(--surface-glass); border: 1px solid var(--line); border-radius: 999px; box-shadow: var(--shadow-xs); font-size: .76rem; font-weight: 800; letter-spacing: .03em; }
+    .hero-kicker-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--brand); box-shadow: 0 0 0 5px var(--brand-glow); animation: pulseDot 2.4s ease-in-out infinite; }
+    @keyframes pulseDot { 50% { box-shadow: 0 0 0 8px transparent; } }
+    .hero h1 { max-width: 670px; margin-bottom: 24px; font-size: clamp(3rem, 6.6vw, 5.65rem); line-height: .96; letter-spacing: -.072em; }
+    .hero h1 .line { display: block; }
+    .hero-lead { max-width: 650px; margin-bottom: 32px; color: var(--text-soft); font-size: clamp(1.06rem, 1.8vw, 1.24rem); line-height: 1.7; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+    .hero-trust { display: flex; flex-wrap: wrap; gap: 13px 24px; margin: 28px 0 0; padding: 0; color: var(--text-faint); list-style: none; font-size: .84rem; font-weight: 680; }
+    .hero-trust li { display: inline-flex; align-items: center; gap: 7px; }
+    .hero-trust svg { width: 16px; height: 16px; flex: 0 0 auto; color: var(--brand); }
+
+    .product-stage { min-width: 0; position: relative; perspective: 1200px; }
+    .product-stage::before { content: ""; position: absolute; inset: 10% 5% -10%; z-index: -1; border-radius: 50%; background: var(--brand-glow); filter: blur(70px); opacity: .75; }
+    .product-window {
+      overflow: hidden;
+      position: relative;
+      min-width: 0;
+      color: #eaf4ee;
+      background: #0d1611;
+      border: 1px solid rgba(255, 255, 255, .11);
+      border-radius: 26px;
+      box-shadow: 0 40px 110px rgba(4, 18, 10, .34);
+      transform: rotateY(-3deg) rotateX(1deg);
+      transition: transform .4s ease, box-shadow .4s ease;
+    }
+    .product-window:hover { transform: rotateY(0) rotateX(0) translateY(-4px); box-shadow: 0 48px 120px rgba(4, 18, 10, .4); }
+    .window-bar { height: 48px; display: flex; align-items: center; justify-content: space-between; padding: 0 17px; color: #8da096; background: #111d16; border-bottom: 1px solid rgba(255, 255, 255, .08); font-size: .7rem; }
+    .window-dots { display: flex; gap: 6px; }
+    .window-dots i { width: 7px; height: 7px; border-radius: 50%; background: #31443a; }
+    .window-dots i:first-child { background: #36c77c; }
+    .window-label { display: inline-flex; align-items: center; gap: 7px; }
+    .window-label::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: #36d987; box-shadow: 0 0 0 4px rgba(54, 217, 135, .1); }
+    .product-layout { min-height: 455px; display: grid; grid-template-columns: 144px minmax(0, 1fr) 164px; }
+    .app-sidebar { padding: 18px 12px; background: #101a14; border-right: 1px solid rgba(255, 255, 255, .07); }
+    .app-brand { display: flex; align-items: center; gap: 7px; margin: 0 5px 24px; color: #fff; font-size: .73rem; font-weight: 800; }
+    .app-brand-mark { width: 22px; height: 22px; color: #34d485; }
+    .side-label { margin: 0 7px 8px; color: #607469; font-size: .57rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+    .side-item { display: flex; align-items: center; gap: 8px; margin-bottom: 5px; padding: 9px 10px; color: #83978c; border-radius: 9px; font-size: .66rem; font-weight: 680; }
+    .side-item.active { color: #dcf8e9; background: rgba(52, 212, 133, .12); }
+    .side-item svg { width: 14px; height: 14px; flex: 0 0 auto; }
+    .app-main { min-width: 0; display: flex; flex-direction: column; background: #0c1410; }
+    .app-top { min-height: 64px; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 17px; border-bottom: 1px solid rgba(255, 255, 255, .07); }
+    .contact-id { min-width: 0; display: flex; align-items: center; gap: 9px; }
+    .contact-avatar { width: 32px; height: 32px; display: grid; place-items: center; flex: 0 0 auto; color: #baf0d1; background: #1b3527; border: 1px solid rgba(83, 226, 148, .18); border-radius: 10px; }
+    .contact-avatar svg { width: 16px; height: 16px; }
+    .contact-id strong, .contact-id span { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .contact-id strong { color: #eff9f3; font-size: .72rem; }
+    .contact-id span { color: #6f8378; font-size: .59rem; }
+    .live-badge { display: inline-flex; align-items: center; gap: 5px; padding: 5px 7px; color: #7de4aa; background: rgba(52, 212, 133, .09); border: 1px solid rgba(52, 212, 133, .15); border-radius: 999px; font-size: .54rem; font-weight: 800; white-space: nowrap; }
+    .live-badge::before { content: ""; width: 5px; height: 5px; border-radius: 50%; background: #45e18e; }
+    .app-chat { flex: 1; display: flex; flex-direction: column; gap: 10px; padding: 19px 17px 15px; }
+    .app-message { width: fit-content; max-width: 88%; padding: 10px 11px; color: #aec0b6; background: #16211b; border: 1px solid rgba(255, 255, 255, .06); border-radius: 12px 12px 12px 4px; font-size: .64rem; line-height: 1.55; opacity: 0; transform: translateY(8px); animation: messageIn .45s ease forwards; }
+    .app-message:nth-child(2) { animation-delay: .45s; }
+    .app-message:nth-child(3) { animation-delay: .9s; }
+    .app-message:nth-child(4) { animation-delay: 1.35s; }
+    .app-message--ai { align-self: flex-end; color: #eafff2; background: linear-gradient(135deg, #087a45, #0c9555); border-color: transparent; border-radius: 12px 12px 4px 12px; }
+    .message-meta { display: block; margin-top: 4px; color: rgba(255, 255, 255, .55); font-size: .51rem; text-align: right; }
+    @keyframes messageIn { to { opacity: 1; transform: translateY(0); } }
+    .app-composer { display: flex; align-items: center; gap: 8px; margin: 0 14px 14px; padding: 9px 11px; color: #52665a; background: #111d16; border: 1px solid rgba(255, 255, 255, .07); border-radius: 10px; font-size: .59rem; }
+    .app-composer svg { width: 13px; height: 13px; margin-left: auto; color: #41d58a; }
+    .app-insights { padding: 17px 12px; background: #101a14; border-left: 1px solid rgba(255, 255, 255, .07); }
+    .insight-heading { margin-bottom: 13px; color: #e4f0e8; font-size: .65rem; font-weight: 800; }
+    .insight-box { margin-bottom: 9px; padding: 10px; background: #14221a; border: 1px solid rgba(255, 255, 255, .06); border-radius: 10px; }
+    .insight-box small { display: block; margin-bottom: 3px; color: #687d71; font-size: .5rem; font-weight: 750; letter-spacing: .07em; text-transform: uppercase; }
+    .insight-box strong { display: block; color: #dcebe2; font-size: .62rem; line-height: 1.4; }
+    .insight-box--success { background: rgba(52, 212, 133, .08); border-color: rgba(52, 212, 133, .14); }
+    .insight-box--success strong { color: #7ee5ad; }
+    .ai-scan { overflow: hidden; position: absolute; inset: 48px 0 0; pointer-events: none; }
+    .ai-scan::after { content: ""; position: absolute; right: 0; left: 0; height: 1px; background: linear-gradient(90deg, transparent, rgba(70, 225, 141, .7), transparent); box-shadow: 0 0 18px rgba(70, 225, 141, .4); animation: scan 5s ease-in-out infinite; }
+    @keyframes scan { 0%, 100% { top: 8%; opacity: 0; } 15%, 85% { opacity: .65; } 50% { top: 92%; } }
+    .floating-chip { position: absolute; z-index: 3; display: flex; align-items: center; gap: 8px; padding: 10px 12px; color: var(--text); background: var(--surface-glass); border: 1px solid var(--line); border-radius: 13px; box-shadow: var(--shadow-md); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); font-size: .7rem; font-weight: 760; animation: float 4s ease-in-out infinite; }
+    .floating-chip svg { width: 17px; height: 17px; color: var(--brand); }
+    .floating-chip--one { top: 14%; right: -28px; }
+    .floating-chip--two { bottom: 10%; left: -34px; animation-delay: -1.8s; }
+    @keyframes float { 50% { transform: translateY(-8px); } }
+
+    .signal-bar { position: relative; z-index: 3; margin-top: -30px; }
+    .signal-inner { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); overflow: hidden; background: var(--surface-glass); border: 1px solid var(--line); border-radius: 20px; box-shadow: var(--shadow-md); -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px); }
+    .signal-item { min-width: 0; display: flex; align-items: center; gap: 13px; padding: 20px 24px; }
+    .signal-item + .signal-item { border-left: 1px solid var(--line); }
+    .signal-icon { width: 39px; height: 39px; display: grid; place-items: center; flex: 0 0 auto; color: var(--brand-dark); background: var(--brand-soft); border-radius: 12px; }
+    .signal-icon svg { width: 19px; height: 19px; }
+    .signal-item strong, .signal-item span { display: block; }
+    .signal-item strong { font-size: .84rem; line-height: 1.35; }
+    .signal-item span { color: var(--text-faint); font-size: .73rem; }
+
+    .problem-intro { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, .75fr); gap: clamp(40px, 8vw, 120px); align-items: end; margin-bottom: 52px; }
+    .problem-intro h2 { margin-bottom: 0; font-size: clamp(2.2rem, 5vw, 4.1rem); line-height: 1.02; letter-spacing: -.06em; }
+    .problem-intro p { margin-bottom: 0; color: var(--text-soft); font-size: 1.08rem; }
+    .pain-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+    .pain-card { min-width: 0; padding: 28px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-md); box-shadow: var(--shadow-sm); transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease; }
+    .pain-card:hover { transform: translateY(-5px); border-color: var(--line-strong); box-shadow: var(--shadow-md); }
+    .pain-number { width: 33px; height: 33px; display: grid; place-items: center; margin-bottom: 35px; color: var(--danger); background: var(--danger-soft); border-radius: 10px; font-size: .75rem; font-weight: 850; }
+    .pain-card h3 { margin-bottom: 9px; font-size: 1.12rem; letter-spacing: -.025em; }
+    .pain-card p { margin-bottom: 0; color: var(--text-soft); font-size: .93rem; }
+
+    .solution-layout { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(320px, .75fr); gap: 20px; }
+    .solution-card { overflow: hidden; position: relative; min-width: 0; padding: clamp(28px, 4vw, 46px); background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); }
+    .solution-card--main { min-height: 470px; background: linear-gradient(145deg, var(--surface) 0%, var(--bg-soft) 100%); }
+    .solution-card--main::after { content: ""; position: absolute; width: 340px; aspect-ratio: 1; right: -140px; bottom: -190px; border-radius: 50%; background: var(--brand-glow); filter: blur(18px); }
+    .solution-card h3 { margin-bottom: 12px; font-size: clamp(1.7rem, 3.5vw, 2.65rem); line-height: 1.08; letter-spacing: -.045em; }
+    .solution-card > p { max-width: 620px; color: var(--text-soft); }
+    .solution-stack { display: grid; gap: 20px; }
+    .solution-stack .solution-card { min-height: 225px; }
+    .solution-stack h3 { font-size: 1.35rem; }
+    .flow-visual { position: relative; z-index: 1; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 46px; }
+    .flow-step { position: relative; min-width: 0; padding: 18px; background: var(--surface-glass); border: 1px solid var(--line); border-radius: 16px; box-shadow: var(--shadow-xs); }
+    .flow-step + .flow-step::before { content: ""; position: absolute; width: 13px; height: 1px; top: 50%; left: -13px; background: var(--brand); }
+    .flow-step svg { width: 24px; height: 24px; margin-bottom: 15px; color: var(--brand-dark); }
+    .flow-step strong, .flow-step span { display: block; }
+    .flow-step strong { margin-bottom: 3px; font-size: .83rem; }
+    .flow-step span { color: var(--text-faint); font-size: .7rem; }
+    .solution-icon { width: 48px; height: 48px; display: grid; place-items: center; margin-bottom: 42px; color: var(--brand-dark); background: var(--brand-soft); border-radius: 15px; }
+    .solution-icon svg { width: 23px; height: 23px; }
+
+    .steps { position: relative; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 38px; }
+    .steps::before { content: ""; position: absolute; top: 27px; right: 16%; left: 16%; height: 1px; background: linear-gradient(90deg, transparent, var(--line-strong) 18%, var(--line-strong) 82%, transparent); }
+    .step { position: relative; z-index: 1; min-width: 0; text-align: center; }
+    .step-number { width: 56px; height: 56px; display: grid; place-items: center; margin: 0 auto 24px; color: #fff; background: linear-gradient(135deg, var(--brand), var(--brand-dark)); border: 7px solid var(--bg); border-radius: 50%; box-shadow: 0 0 0 1px var(--line), 0 12px 28px var(--brand-glow); font-size: .76rem; font-weight: 850; }
+    .step h3 { margin-bottom: 9px; font-size: 1.08rem; }
+    .step p { max-width: 300px; margin: 0 auto; color: var(--text-soft); font-size: .91rem; }
+
+    .feature-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+    .feature-card { min-width: 0; padding: 28px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-md); box-shadow: var(--shadow-xs); transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease; }
+    .feature-card:hover { transform: translateY(-5px); border-color: var(--brand); box-shadow: var(--shadow-md); }
+    .feature-icon { width: 47px; height: 47px; display: grid; place-items: center; margin-bottom: 25px; color: var(--brand-dark); background: var(--brand-soft); border-radius: 14px; transition: transform .25s ease; }
+    .feature-card:hover .feature-icon { transform: scale(1.06) rotate(-2deg); }
+    .feature-icon svg { width: 23px; height: 23px; }
+    .feature-card h3 { margin-bottom: 8px; font-size: 1.06rem; letter-spacing: -.02em; }
+    .feature-card p { margin-bottom: 0; color: var(--text-soft); font-size: .9rem; }
+
+    .demo-wrap { display: grid; grid-template-columns: minmax(300px, .66fr) minmax(0, 1.34fr); gap: clamp(38px, 7vw, 86px); align-items: center; }
+    .demo-copy h2 { margin-bottom: 18px; font-size: clamp(2.2rem, 4.7vw, 3.65rem); line-height: 1.04; letter-spacing: -.055em; }
+    .demo-copy > p { margin-bottom: 26px; color: var(--text-soft); }
+    .demo-tabs { display: grid; gap: 9px; }
+    .demo-tab { width: 100%; display: grid; grid-template-columns: 35px minmax(0, 1fr); gap: 12px; align-items: center; padding: 13px; color: var(--text-soft); background: transparent; border: 1px solid transparent; border-radius: 14px; cursor: pointer; text-align: left; transition: background-color .2s ease, border-color .2s ease, color .2s ease, transform .2s ease; }
+    .demo-tab:hover { color: var(--text); background: var(--surface-muted); }
+    .demo-tab[aria-selected="true"] { color: var(--text); background: var(--surface); border-color: var(--line); box-shadow: var(--shadow-sm); transform: translateX(4px); }
+    .demo-tab-index { width: 35px; height: 35px; display: grid; place-items: center; color: var(--brand-dark); background: var(--brand-soft); border-radius: 10px; font-size: .69rem; font-weight: 850; }
+    .demo-tab strong, .demo-tab small { display: block; }
+    .demo-tab strong { font-size: .86rem; }
+    .demo-tab small { color: var(--text-faint); font-size: .69rem; }
+    .demo-console { overflow: hidden; position: relative; min-width: 0; color: #e8f3ec; background: #0b1410; border: 1px solid rgba(255, 255, 255, .1); border-radius: 28px; box-shadow: var(--shadow-lg); }
+    .console-bar { min-height: 55px; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 13px 18px; background: #101c15; border-bottom: 1px solid rgba(255, 255, 255, .07); }
+    .console-title { display: flex; align-items: center; gap: 9px; font-size: .72rem; font-weight: 780; }
+    .console-title-mark { width: 24px; height: 24px; display: grid; place-items: center; color: #fff; background: #0a9855; border-radius: 8px; }
+    .console-title-mark svg { width: 14px; height: 14px; }
+    .console-state { display: inline-flex; align-items: center; gap: 6px; color: #77dda5; font-size: .58rem; font-weight: 750; }
+    .console-state::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: #45df8d; box-shadow: 0 0 0 4px rgba(69, 223, 141, .1); }
+    .console-body { min-height: 410px; display: grid; grid-template-columns: minmax(0, 1fr) 190px; }
+    .demo-chat { display: flex; flex-direction: column; gap: 11px; padding: 24px; }
+    .demo-message { width: fit-content; max-width: 82%; padding: 12px 13px; color: #aebfb5; background: #15211a; border: 1px solid rgba(255, 255, 255, .06); border-radius: 14px 14px 14px 5px; font-size: .76rem; line-height: 1.55; animation: demoMessage .35s ease both; }
+    .demo-message:nth-child(2) { animation-delay: .08s; }
+    .demo-message:nth-child(3) { animation-delay: .16s; }
+    .demo-message:nth-child(4) { animation-delay: .24s; }
+    .demo-message--ai { align-self: flex-end; color: #effff6; background: linear-gradient(135deg, #067942, #0b9a57); border-color: transparent; border-radius: 14px 14px 5px 14px; }
+    @keyframes demoMessage { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+    .demo-thinking { display: flex; gap: 4px; width: fit-content; padding: 10px 12px; background: #15211a; border-radius: 13px 13px 13px 5px; }
+    .demo-thinking i { width: 5px; height: 5px; border-radius: 50%; background: #6f8378; animation: dots 1s ease-in-out infinite; }
+    .demo-thinking i:nth-child(2) { animation-delay: .12s; }
+    .demo-thinking i:nth-child(3) { animation-delay: .24s; }
+    @keyframes dots { 50% { transform: translateY(-3px); opacity: .45; } }
+    .demo-insight { padding: 21px 16px; background: #101b15; border-left: 1px solid rgba(255, 255, 255, .07); }
+    .demo-insight h3 { margin-bottom: 16px; color: #dcebe2; font-size: .7rem; }
+    .demo-insight-list { display: grid; gap: 9px; }
+    .demo-insight-item { padding: 11px; background: #14221a; border: 1px solid rgba(255, 255, 255, .06); border-radius: 10px; }
+    .demo-insight-item span, .demo-insight-item strong { display: block; }
+    .demo-insight-item span { margin-bottom: 3px; color: #60756a; font-size: .52rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
+    .demo-insight-item strong { color: #d6e7dd; font-size: .65rem; }
+    .demo-insight-item.highlight { background: rgba(52, 212, 133, .08); border-color: rgba(52, 212, 133, .15); }
+    .demo-insight-item.highlight strong { color: #74e3a7; }
+
+    .audience-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+    .audience-card { min-width: 0; padding: 25px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-md); transition: transform .25s ease, border-color .25s ease; }
+    .audience-card:hover { transform: translateY(-4px); border-color: var(--brand); }
+    .audience-card svg { width: 24px; height: 24px; margin-bottom: 30px; color: var(--brand-dark); }
+    .audience-card h3 { margin-bottom: 7px; font-size: .98rem; }
+    .audience-card p { margin-bottom: 0; color: var(--text-soft); font-size: .84rem; }
+
+    .pricing-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; align-items: stretch; }
+    .plan { min-width: 0; display: flex; flex-direction: column; position: relative; padding: 27px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-md); box-shadow: var(--shadow-xs); transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease; }
+    .plan:hover { transform: translateY(-6px); border-color: var(--brand); box-shadow: var(--shadow-md); }
+    .plan--featured { border: 2px solid var(--brand); box-shadow: 0 24px 70px var(--brand-glow); }
+    .plan-badge { align-self: flex-start; margin-bottom: 18px; padding: 5px 9px; color: var(--brand-dark); background: var(--brand-soft); border-radius: 999px; font-size: .62rem; font-weight: 850; letter-spacing: .06em; text-transform: uppercase; }
+    .plan-badge--empty { visibility: hidden; }
+    .plan-name { margin-bottom: 5px; color: var(--brand-dark); font-size: .77rem; font-weight: 880; letter-spacing: .13em; text-transform: uppercase; }
+    .plan-desc { min-height: 47px; margin-bottom: 20px; color: var(--text-soft); font-size: .87rem; }
+    .plan-price { min-height: 54px; display: flex; align-items: flex-end; gap: 5px; margin-bottom: 22px; }
+    .plan-price strong { font-size: clamp(2rem, 3vw, 2.5rem); line-height: 1; letter-spacing: -.055em; white-space: nowrap; }
+    .plan-price span { color: var(--text-faint); font-size: .77rem; }
+    .plan-price--custom strong { font-size: 1.8rem; white-space: normal; }
+    .plan-list { display: grid; gap: 12px; margin: 0 0 22px; padding: 20px 0 0; border-top: 1px solid var(--line); list-style: none; }
+    .plan-list li { display: grid; grid-template-columns: 18px minmax(0, 1fr); gap: 9px; color: var(--text-soft); font-size: .84rem; }
+    .plan-list svg { width: 17px; height: 17px; margin-top: 3px; color: var(--brand); }
+    .install-note { margin-top: auto; margin-bottom: 14px; padding: 11px; color: var(--text-soft); background: var(--surface-muted); border-radius: 11px; font-size: .73rem; line-height: 1.45; text-align: center; }
+    .plan .button { width: 100%; }
+
+    .faq-layout { display: grid; grid-template-columns: minmax(260px, .55fr) minmax(0, 1fr); gap: clamp(40px, 8vw, 110px); align-items: start; }
+    .faq-intro { position: sticky; top: 115px; }
+    .faq-intro h2 { margin-bottom: 14px; font-size: clamp(2.1rem, 4.5vw, 3.45rem); line-height: 1.04; letter-spacing: -.055em; }
+    .faq-intro p { color: var(--text-soft); }
+    .faq-list { display: grid; gap: 11px; }
+    .faq-item { overflow: hidden; background: var(--surface); border: 1px solid var(--line); border-radius: 17px; transition: border-color .2s ease; }
+    .faq-item.open { border-color: var(--line-strong); }
+    .faq-question { width: 100%; display: grid; grid-template-columns: minmax(0, 1fr) 24px; gap: 16px; align-items: center; padding: 20px 21px; color: var(--text); background: transparent; border: 0; cursor: pointer; font-size: .94rem; font-weight: 760; text-align: left; }
+    .faq-question svg { width: 21px; height: 21px; color: var(--brand); transition: transform .25s ease; }
+    .faq-item.open .faq-question svg { transform: rotate(45deg); }
+    .faq-answer { max-height: 0; overflow: hidden; transition: max-height .32s ease; }
+    .faq-answer p { margin: 0; padding: 0 21px 21px; color: var(--text-soft); font-size: .9rem; }
+
+    .final-cta { padding-top: 24px; }
+    .final-cta-card { overflow: hidden; position: relative; isolation: isolate; padding: clamp(42px, 7vw, 82px); color: #f2fff7; background: #09150e; border: 1px solid rgba(255, 255, 255, .09); border-radius: 34px; box-shadow: var(--shadow-lg); }
+    .final-cta-card::before { content: ""; position: absolute; z-index: -1; width: 520px; aspect-ratio: 1; right: -170px; top: -260px; border-radius: 50%; background: radial-gradient(circle, rgba(42, 214, 126, .26), transparent 68%); }
+    .final-cta-card::after { content: ""; position: absolute; z-index: -1; inset: 0; opacity: .23; background-image: linear-gradient(rgba(91, 237, 157, .18) 1px, transparent 1px), linear-gradient(90deg, rgba(91, 237, 157, .18) 1px, transparent 1px); background-size: 54px 54px; -webkit-mask-image: linear-gradient(90deg, transparent, #000); mask-image: linear-gradient(90deg, transparent, #000); }
+    .final-cta-content { max-width: 780px; }
+    .final-cta .eyebrow { color: #69e6a1; }
+    .final-cta h2 { margin-bottom: 17px; font-size: clamp(2.35rem, 5.6vw, 4.4rem); line-height: 1.01; letter-spacing: -.062em; }
+    .final-cta p { max-width: 650px; margin-bottom: 28px; color: #9fb5a8; font-size: 1.06rem; }
+    .final-cta .button--primary { background: linear-gradient(135deg, #26c977, #079454); }
+
+    .footer { padding: 38px 0; }
+    .footer-top { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding-bottom: 26px; border-bottom: 1px solid var(--line); }
+    .footer-links { display: flex; flex-wrap: wrap; gap: 18px 25px; color: var(--text-soft); font-size: .82rem; font-weight: 680; }
+    .footer-links a:hover { color: var(--brand-dark); }
+    .footer-bottom { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding-top: 22px; color: var(--text-faint); font-size: .76rem; }
+    .footer-bottom p { margin: 0; }
+
+    [data-reveal] { opacity: 0; transform: translateY(22px); transition: opacity .7s ease, transform .7s cubic-bezier(.2, .7, .2, 1); }
+    [data-reveal="left"] { transform: translateX(-24px); }
+    [data-reveal="right"] { transform: translateX(24px); }
+    [data-reveal].visible { opacity: 1; transform: none; }
+    [data-delay="1"] { transition-delay: .07s; }
+    [data-delay="2"] { transition-delay: .14s; }
+    [data-delay="3"] { transition-delay: .21s; }
+    [data-delay="4"] { transition-delay: .28s; }
+    [data-delay="5"] { transition-delay: .35s; }
+
+    @media (max-width: 1120px) {
+      .desktop-nav { display: none; }
+      .menu-toggle { display: grid; }
+      .mobile-menu { display: block; overflow: auto; position: fixed; z-index: 95; inset: 78px 0 0; padding: 20px; background: var(--bg); border-top: 1px solid var(--line); opacity: 0; visibility: hidden; transform: translateY(-10px); transition: opacity .2s ease, visibility .2s ease, transform .2s ease; }
+      .mobile-menu.open { opacity: 1; visibility: visible; transform: none; }
+      .mobile-menu-inner { width: min(560px, 100%); display: grid; gap: 8px; margin: 0 auto; }
+      .mobile-menu a { padding: 15px 16px; background: var(--surface); border: 1px solid var(--line); border-radius: 13px; font-weight: 740; }
+      .mobile-menu .button { margin-top: 10px; }
+      .hero { min-height: auto; padding-top: 132px; }
+      .hero-grid { grid-template-columns: minmax(0, 1fr); }
+      .hero-copy { max-width: 780px; text-align: center; margin-inline: auto; }
+      .hero h1, .hero-lead { margin-inline: auto; }
+      .hero-actions, .hero-trust { justify-content: center; }
+      .product-stage { width: min(100%, 850px); margin-inline: auto; }
+      .product-window { transform: none; }
+      .solution-layout { grid-template-columns: minmax(0, 1fr); }
+      .solution-stack { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .demo-wrap { grid-template-columns: minmax(0, 1fr); }
+      .demo-copy { max-width: 760px; margin-inline: auto; text-align: center; }
+      .demo-tabs { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .demo-tab { grid-template-columns: 1fr; text-align: center; }
+      .demo-tab-index { margin-inline: auto; }
+      .demo-tab[aria-selected="true"] { transform: translateY(-3px); }
+      .pricing-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .audience-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    @media (max-width: 820px) {
+      .nav-cta { display: none; }
+      .signal-inner { grid-template-columns: 1fr; }
+      .signal-item + .signal-item { border-top: 1px solid var(--line); border-left: 0; }
+      .problem-intro { grid-template-columns: 1fr; gap: 22px; }
+      .pain-grid, .feature-grid { grid-template-columns: 1fr; }
+      .steps { grid-template-columns: 1fr; gap: 28px; }
+      .steps::before { top: 28px; bottom: 28px; left: 27px; width: 1px; height: auto; background: linear-gradient(transparent, var(--line-strong) 15%, var(--line-strong) 85%, transparent); }
+      .step { display: grid; grid-template-columns: 56px minmax(0, 1fr); gap: 18px; text-align: left; }
+      .step-number { margin: 0; }
+      .step-copy { padding-top: 7px; }
+      .step p { max-width: none; margin: 0; }
+      .faq-layout { grid-template-columns: 1fr; }
+      .faq-intro { position: static; text-align: center; }
+      .footer-top, .footer-bottom { flex-direction: column; align-items: flex-start; }
+    }
+
+    @media (max-width: 620px) {
+      .container { width: min(var(--content), calc(100% - 28px)); }
+      .section { padding: 72px 0; }
+      .nav { min-height: 70px; }
+      .mobile-menu { inset-top: 70px; top: 70px; }
+      .brand { font-size: 1.25rem; }
+      .brand-mark { width: 34px; height: 34px; }
+      .brand-ai { font-size: .55rem; }
+      .hero { padding: 112px 0 72px; }
+      .hero h1 { font-size: clamp(2.7rem, 14vw, 4rem); }
+      .hero-actions { display: grid; grid-template-columns: 1fr; }
+      .hero-actions .button { width: 100%; }
+      .hero-trust { display: grid; grid-template-columns: 1fr; justify-content: start; width: fit-content; margin-inline: auto; text-align: left; }
+      .product-layout { min-height: 405px; grid-template-columns: minmax(0, 1fr); }
+      .app-sidebar, .app-insights { display: none; }
+      .product-window { border-radius: 20px; }
+      .floating-chip { display: none; }
+      .signal-bar { margin-top: -20px; }
+      .signal-item { padding: 17px 18px; }
+      .solution-stack { grid-template-columns: 1fr; }
+      .solution-card--main { min-height: auto; }
+      .flow-visual { grid-template-columns: 1fr; margin-top: 30px; }
+      .flow-step + .flow-step::before { width: 1px; height: 13px; top: -13px; left: 30px; }
+      .solution-stack .solution-card { min-height: auto; }
+      .solution-icon { margin-bottom: 28px; }
+      .demo-tabs { grid-template-columns: 1fr; }
+      .demo-tab { grid-template-columns: 35px minmax(0, 1fr); text-align: left; }
+      .demo-tab-index { margin: 0; }
+      .demo-tab[aria-selected="true"] { transform: translateX(3px); }
+      .console-body { min-height: 430px; grid-template-columns: minmax(0, 1fr); }
+      .demo-insight { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 14px; padding: 15px; border-top: 1px solid rgba(255, 255, 255, .07); border-left: 0; }
+      .demo-insight h3 { margin: 3px 0 0; }
+      .demo-insight-list { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; }
+      .demo-insight-item { padding: 8px; }
+      .demo-insight-item span { font-size: .45rem; }
+      .demo-insight-item strong { font-size: .56rem; }
+      .audience-grid, .pricing-grid { grid-template-columns: minmax(0, 1fr); }
+      .plan { padding: 24px; }
+      .plan-desc { min-height: auto; }
+      .final-cta-card { border-radius: 25px; }
+      .footer-links { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); width: 100%; }
+    }
+
+    @media (max-width: 380px) {
+      .container { width: min(var(--content), calc(100% - 20px)); }
+      .hero h1 { font-size: 2.45rem; }
+      .icon-button { width: 40px; height: 40px; }
+      .window-label { display: none; }
+      .app-chat { padding: 16px 12px 12px; }
+      .demo-chat { padding: 18px 14px; }
+      .demo-message { max-width: 92%; }
+      .demo-insight { grid-template-columns: 1fr; }
+      .demo-insight-list { grid-template-columns: 1fr; }
+      .final-cta-card { padding: 34px 22px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+      [data-reveal] { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+  <header class="header" id="header">
+    <div class="container nav">
+      <a class="brand" href="#inicio" aria-label="Hubbye AI — início">
+        <svg class="brand-mark" viewBox="0 0 64 64" aria-hidden="true"><path d="M14.5 48.5l3.4-9.7A21 21 0 1 1 27 47.4z" fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/><path d="M24.5 31.5q3.8-6 7.6 0M37 31.5q3.8-6 7.6 0" fill="none" stroke="var(--text)" stroke-width="4" stroke-linecap="round"/><path d="M48.5 10.5l1.7-5M55 15l4-3.3M56.5 22h5" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></svg>
+        <span>hubbye</span><span class="brand-ai">AI</span>
+      </a>
+
+      <nav class="desktop-nav" aria-label="Navegação principal">
+        <a class="nav-link" href="#solucao">Solução</a>
+        <a class="nav-link" href="#como-funciona">Como funciona</a>
+        <a class="nav-link" href="#demonstracao">Demonstração</a>
+        <a class="nav-link" href="#planos">Planos</a>
+        <a class="nav-link" href="#duvidas">Dúvidas</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="icon-button" id="themeToggle" type="button" aria-label="Ativar tema escuro" title="Alternar tema">
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8Z"/></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.42-1.41M17.66 6.34l1.41-1.41"/></svg>
+        </button>
+        <a class="button button--primary button--small nav-cta" href="https://wa.me/5537998201539?text=Ol%C3%A1%2C%20quero%20entender%20como%20o%20Hubbye%20AI%20pode%20ajudar%20minha%20empresa" target="_blank" rel="noopener">Quero conhecer</a>
+        <button class="icon-button menu-toggle" id="menuToggle" type="button" aria-expanded="false" aria-controls="mobileMenu" aria-label="Abrir menu">
+          <svg class="menu-open-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+          <svg class="menu-close-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" style="display:none"><path d="m6 6 12 12M18 6 6 18"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <nav class="mobile-menu-inner" aria-label="Navegação móvel">
+      <a href="#solucao">Solução</a>
+      <a href="#como-funciona">Como funciona</a>
+      <a href="#demonstracao">Demonstração</a>
+      <a href="#planos">Planos</a>
+      <a href="#duvidas">Dúvidas</a>
+      <a class="button button--primary" href="https://wa.me/5537998201539?text=Ol%C3%A1%2C%20quero%20entender%20como%20o%20Hubbye%20AI%20pode%20ajudar%20minha%20empresa" target="_blank" rel="noopener">Falar com um especialista</a>
+    </nav>
+  </div>
+
+  <main id="conteudo">
+    <section class="hero" id="inicio">
+      <div class="container hero-grid">
+        <div class="hero-copy" data-reveal="left">
+          <span class="hero-kicker"><span class="hero-kicker-dot"></span>Inteligência aplicada ao atendimento</span>
+          <h1><span class="line">Transforme conversas</span><span class="line">em <span class="accent">oportunidades.</span></span></h1>
+          <p class="hero-lead">O Hubbye AI responde, entende o contexto e qualifica cada contato com uma comunicação natural — 24 horas por dia.</p>
+          <div class="hero-actions">
+            <a class="button button--primary" href="https://wa.me/5537998201539?text=Ol%C3%A1%2C%20quero%20automatizar%20meu%20atendimento%20com%20o%20Hubbye%20AI" target="_blank" rel="noopener">Quero automatizar meu atendimento<svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m5 12h14M13 6l6 6-6 6"/></svg></a>
+            <a class="button button--secondary" href="#demonstracao"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>Ver o Hubbye AI em ação</a>
+          </div>
+          <ul class="hero-trust" aria-label="Diferenciais principais">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg>Configuração personalizada</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg>Suporte especializado</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg>Planos para diferentes volumes</li>
+          </ul>
+        </div>
+
+        <div class="product-stage" data-reveal="right" data-delay="2" aria-label="Demonstração visual do painel Hubbye AI">
+          <div class="product-window">
+            <div class="window-bar"><div class="window-dots" aria-hidden="true"><i></i><i></i><i></i></div><span class="window-label">Hubbye AI em atendimento</span><span>Visão do painel</span></div>
+            <div class="product-layout">
+              <aside class="app-sidebar" aria-label="Menu ilustrativo do painel">
+                <div class="app-brand"><svg class="app-brand-mark" viewBox="0 0 64 64" aria-hidden="true"><path d="M14.5 48.5l3.4-9.7A21 21 0 1 1 27 47.4z" fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/><path d="M24.5 31.5q3.8-6 7.6 0M37 31.5q3.8-6 7.6 0" fill="none" stroke="#eaf4ee" stroke-width="4" stroke-linecap="round"/></svg>hubbye AI</div>
+                <div class="side-label">Atendimento</div>
+                <div class="side-item active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4Z"/></svg>Conversas</div>
+                <div class="side-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4zM4 10h16M10 4v16"/></svg>Visão geral</div>
+                <div class="side-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v4l3 2"/></svg>Atividade</div>
+              </aside>
+
+              <div class="app-main">
+                <div class="app-top">
+                  <div class="contact-id"><div class="contact-avatar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21a8 8 0 0 0-16 0M12 13a5 5 0 1 0 0-10 5 5 0 0 0 0 10Z"/></svg></div><div><strong>Novo contato</strong><span>Conversa em andamento</span></div></div>
+                  <span class="live-badge">IA ativa</span>
+                </div>
+                <div class="app-chat">
+                  <div class="app-message">Tenho interesse, mas não sei qual plano escolher.</div>
+                  <div class="app-message app-message--ai">Posso ajudar. Quantas mensagens sua empresa recebe por mês?<span class="message-meta">Hubbye AI</span></div>
+                  <div class="app-message">Em torno de 6.000 mensagens.</div>
+                  <div class="app-message app-message--ai">O plano Start comporta esse volume. Vou organizar o resumo para sua equipe comercial.<span class="message-meta">Hubbye AI</span></div>
+                </div>
+                <div class="app-composer">Atendimento inteligente em andamento<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg></div>
+              </div>
+
+              <aside class="app-insights" aria-label="Resumo ilustrativo da conversa">
+                <div class="insight-heading">Resumo da IA</div>
+                <div class="insight-box"><small>Interesse</small><strong>Conhecer planos</strong></div>
+                <div class="insight-box"><small>Volume</small><strong>6.000 mensagens/mês</strong></div>
+                <div class="insight-box insight-box--success"><small>Status</small><strong>Contato qualificado</strong></div>
+              </aside>
+            </div>
+            <div class="ai-scan" aria-hidden="true"></div>
+          </div>
+          <div class="floating-chip floating-chip--one"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 4 4L19 6"/></svg>Contexto identificado</div>
+          <div class="floating-chip floating-chip--two"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16l-6 7v6l-4 2v-8Z"/></svg>Contato qualificado</div>
+        </div>
+      </div>
+    </section>
+
+    <div class="signal-bar">
+      <div class="container signal-inner" data-reveal>
+        <div class="signal-item"><div class="signal-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div><div><strong>Disponível 24 horas</strong><span>Sem depender do horário comercial</span></div></div>
+        <div class="signal-item"><div class="signal-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9.5 4A2.5 2.5 0 0 0 7 6.5V8a3 3 0 0 0-1 5.83V15a3 3 0 0 0 3 3h1M14.5 4A2.5 2.5 0 0 1 17 6.5V8a3 3 0 0 1 1 5.83V15a3 3 0 0 1-3 3h-1M12 3v18"/></svg></div><div><strong>Respostas com contexto</strong><span>Conversas naturais e objetivas</span></div></div>
+        <div class="signal-item"><div class="signal-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16l-6 7v6l-4 2v-8Z"/></svg></div><div><strong>Leads mais organizados</strong><span>Interesse identificado antes do repasse</span></div></div>
+      </div>
+    </div>
+
+    <section class="section section--soft" id="problema">
+      <div class="container">
+        <div class="problem-intro">
+          <div data-reveal="left"><span class="eyebrow">O problema</span><h2>Cada conversa sem resposta pode esfriar uma oportunidade.</h2></div>
+          <p data-reveal="right">Quando o volume cresce, sua equipe passa a repetir respostas, perde contexto e demora para identificar quem realmente está pronto para avançar.</p>
+        </div>
+        <div class="pain-grid">
+          <article class="pain-card" data-reveal data-delay="1"><span class="pain-number">01</span><h3>Respostas demoradas</h3><p>O interesse do contato diminui quando ele precisa esperar para receber uma informação simples.</p></article>
+          <article class="pain-card" data-reveal data-delay="2"><span class="pain-number">02</span><h3>Equipe sobrecarregada</h3><p>Perguntas repetitivas ocupam o tempo que poderia ser usado em negociações e decisões importantes.</p></article>
+          <article class="pain-card" data-reveal data-delay="3"><span class="pain-number">03</span><h3>Oportunidades misturadas</h3><p>Sem qualificação, contatos curiosos e compradores em potencial chegam à equipe do mesmo jeito.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="solucao">
+      <div class="container">
+        <div class="section-heading section-heading--left" data-reveal><span class="eyebrow">A solução</span><h2>Uma primeira linha de atendimento que entende antes de responder.</h2><p>O Hubbye AI conduz o contato com clareza, identifica o que ele procura e prepara o caminho para sua equipe continuar a conversa.</p></div>
+        <div class="solution-layout">
+          <article class="solution-card solution-card--main" data-reveal="left">
+            <span class="eyebrow">Fluxo inteligente</span>
+            <h3>Da primeira mensagem ao próximo passo, sem atrito.</h3>
+            <p>A conversa deixa de ser apenas uma troca de mensagens e passa a gerar contexto útil para o atendimento.</p>
+            <div class="flow-visual" aria-label="Fluxo de atendimento">
+              <div class="flow-step"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4Z"/></svg><strong>Recebe</strong><span>O contato inicia a conversa</span></div>
+              <div class="flow-step"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/><circle cx="12" cy="12" r="3"/></svg><strong>Entende</strong><span>A IA identifica contexto e interesse</span></div>
+              <div class="flow-step"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 4 4L19 6"/></svg><strong>Qualifica</strong><span>A equipe recebe um contato mais claro</span></div>
+            </div>
+          </article>
+          <div class="solution-stack">
+            <article class="solution-card" data-reveal="right" data-delay="1"><div class="solution-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12a8 8 0 1 0 16 0 8 8 0 1 0-16 0M12 8v4l3 2"/></svg></div><h3>Continuidade real</h3><p>O atendimento continua mesmo quando sua equipe não está disponível.</p></article>
+            <article class="solution-card" data-reveal="right" data-delay="2"><div class="solution-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 12h.01M12 12h.01M16 12h.01M21 12a9 9 0 0 1-9 9H4l-1 1 2-6a9 9 0 1 1 16-4Z"/></svg></div><h3>Comunicação natural</h3><p>Respostas diretas e contextualizadas, sem depender de menus rígidos.</p></article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--soft section--grid" id="como-funciona">
+      <div class="container">
+        <div class="section-heading" data-reveal><span class="eyebrow">Como funciona</span><h2>Simples para começar. Útil desde a primeira conversa.</h2><p>A implementação é organizada para adaptar o atendimento à realidade da sua empresa.</p></div>
+        <div class="steps">
+          <article class="step" data-reveal data-delay="1"><div class="step-number">01</div><div class="step-copy"><h3>Entendemos seu negócio</h3><p>Mapeamos informações, dúvidas frequentes e o jeito certo de conduzir seus contatos.</p></div></article>
+          <article class="step" data-reveal data-delay="2"><div class="step-number">02</div><div class="step-copy"><h3>Configuramos a inteligência</h3><p>O Hubbye AI é preparado para responder com contexto e respeitar o fluxo definido.</p></div></article>
+          <article class="step" data-reveal data-delay="3"><div class="step-number">03</div><div class="step-copy"><h3>Seu atendimento ganha escala</h3><p>A IA atende e qualifica, enquanto sua equipe foca nas conversas que exigem ação humana.</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="recursos">
+      <div class="container">
+        <div class="section-heading" data-reveal><span class="eyebrow">Benefícios e recursos</span><h2>Menos repetição. Mais contexto. Mais foco para sua equipe.</h2><p>Recursos essenciais para tornar a operação mais ágil sem complicar a experiência do contato.</p></div>
+        <div class="feature-grid">
+          <article class="feature-card" data-reveal data-delay="1"><div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div><h3>Atendimento 24 horas</h3><p>Mantenha respostas disponíveis durante o dia, à noite, em fins de semana e feriados.</p></article>
+          <article class="feature-card" data-reveal data-delay="2"><div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9.5 4A2.5 2.5 0 0 0 7 6.5V8a3 3 0 0 0-1 5.83V15a3 3 0 0 0 3 3h1M14.5 4A2.5 2.5 0 0 1 17 6.5V8a3 3 0 0 1 1 5.83V15a3 3 0 0 1-3 3h-1M12 3v18"/></svg></div><h3>Respostas contextualizadas</h3><p>A inteligência considera o que já foi dito para conduzir uma conversa mais coerente.</p></article>
+          <article class="feature-card" data-reveal data-delay="3"><div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16l-6 7v6l-4 2v-8Z"/></svg></div><h3>Qualificação de contatos</h3><p>Identifique interesse, necessidade e volume antes de encaminhar o contato à equipe.</p></article>
+          <article class="feature-card" data-reveal data-delay="1"><div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 0 0-2 2v3M16 3h3a2 2 0 0 1 2 2v3M8 21H5a2 2 0 0 1-2-2v-3M16 21h3a2 2 0 0 0 2-2v-3M8 12h8"/></svg></div><h3>Configuração personalizada</h3><p>O atendimento é preparado de acordo com as informações e necessidades do seu negócio.</p></article>
+          <article class="feature-card" data-reveal data-delay="2"><div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8ZM22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div><h3>Passagem para a equipe</h3><p>As melhores oportunidades chegam com mais contexto para a continuidade humana.</p></article>
+          <article class="feature-card" data-reveal data-delay="3"><div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 15v2a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3v-2M8 9l4-4 4 4M12 5v10"/></svg></div><h3>Capacidade escalável</h3><p>Escolha o plano adequado ao seu volume e ajuste a estrutura conforme a operação evolui.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--soft" id="demonstracao">
+      <div class="container demo-wrap">
+        <div class="demo-copy" data-reveal="left">
+          <span class="eyebrow">Demonstração</span>
+          <h2>Veja a IA organizar a conversa em tempo real.</h2>
+          <p>Explore exemplos objetivos de como o Hubbye AI pode responder, qualificar e preparar o próximo passo.</p>
+          <div class="demo-tabs" role="tablist" aria-label="Cenários da demonstração">
+            <button class="demo-tab" id="tab-planos" type="button" role="tab" aria-selected="true" aria-controls="demo-panel" data-demo="planos"><span class="demo-tab-index">01</span><span><strong>Dúvida sobre planos</strong><small>Entende o volume e orienta</small></span></button>
+            <button class="demo-tab" id="tab-qualificacao" type="button" role="tab" aria-selected="false" aria-controls="demo-panel" data-demo="qualificacao" tabindex="-1"><span class="demo-tab-index">02</span><span><strong>Qualificação</strong><small>Coleta o contexto necessário</small></span></button>
+            <button class="demo-tab" id="tab-encaminhamento" type="button" role="tab" aria-selected="false" aria-controls="demo-panel" data-demo="encaminhamento" tabindex="-1"><span class="demo-tab-index">03</span><span><strong>Encaminhamento</strong><small>Prepara o contato para a equipe</small></span></button>
+          </div>
+        </div>
+
+        <div class="demo-console" id="demo-panel" role="tabpanel" aria-labelledby="tab-planos" data-reveal="right">
+          <div class="console-bar"><div class="console-title"><span class="console-title-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 10h.01M12 10h.01M16 10h.01M21 12a8 8 0 0 1-8 8H6l-3 3v-7a8 8 0 1 1 18-4Z"/></svg></span><span id="demoTitle">Atendimento sobre planos</span></div><span class="console-state">IA em atendimento</span></div>
+          <div class="console-body">
+            <div class="demo-chat" id="demoChat" aria-live="polite">
+              <div class="demo-message">Qual plano funciona para uma empresa que recebe cerca de 6.000 mensagens por mês?</div>
+              <div class="demo-message demo-message--ai">Para esse volume, o plano Start comporta até 8.000 mensagens e 15 milhões de tokens.</div>
+              <div class="demo-message">E existe alguma taxa no primeiro mês?</div>
+              <div class="demo-message demo-message--ai">Sim. A instalação custa R$ 197 apenas no primeiro mês e cobre a configuração personalizada.</div>
+            </div>
+            <aside class="demo-insight" aria-label="Resumo do atendimento"><h3>Análise da conversa</h3><div class="demo-insight-list"><div class="demo-insight-item"><span>Intenção</span><strong id="demoIntent">Conhecer planos</strong></div><div class="demo-insight-item"><span>Contexto</span><strong id="demoContext">6.000 mensagens/mês</strong></div><div class="demo-insight-item highlight"><span>Próximo passo</span><strong id="demoNext">Apresentar plano Start</strong></div></div></aside>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="para-quem">
+      <div class="container">
+        <div class="section-heading" data-reveal><span class="eyebrow">Para quem serve</span><h2>Feito para operações que recebem conversas todos os dias.</h2><p>O Hubbye AI se adapta especialmente bem a negócios que precisam responder rápido, organizar demanda e aproveitar melhor cada contato.</p></div>
+        <div class="audience-grid">
+          <article class="audience-card" data-reveal data-delay="1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M6 21V7l6-4 6 4v14M9 9h.01M15 9h.01M9 13h.01M15 13h.01M9 17h6"/></svg><h3>Empresas de serviços</h3><p>Para organizar dúvidas, pedidos de orçamento e contatos recorrentes.</p></article>
+          <article class="audience-card" data-reveal data-delay="2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="7" r="4"/><path d="M17 11a4 4 0 1 0 0-8M2 21a7 7 0 0 1 14 0M17 14a7 7 0 0 1 5 7"/></svg><h3>Equipes comerciais</h3><p>Para receber oportunidades com interesse e contexto mais claros.</p></article>
+          <article class="audience-card" data-reveal data-delay="3"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 5h16v14H4zM8 9h8M8 13h5"/></svg><h3>Agências</h3><p>Para estruturar operações com diferentes volumes e necessidades.</p></article>
+          <article class="audience-card" data-reveal data-delay="4"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h18v5H3zM5 8v13h14V8M9 12h6"/></svg><h3>Negócios com alto contato</h3><p>Para reduzir repetição e manter o atendimento disponível por mais tempo.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--soft" id="planos">
+      <div class="container">
+        <div class="section-heading" data-reveal><span class="eyebrow">Planos</span><h2>Escolha a capacidade ideal para o seu atendimento.</h2><p>Comece com o volume que sua empresa precisa hoje e evolua quando a operação crescer.</p></div>
+        <div class="pricing-grid">
+          <article class="plan" data-reveal data-delay="1">
+            <span class="plan-badge plan-badge--empty" aria-hidden="true">Plano</span><div class="plan-name">Essencial</div><p class="plan-desc">Para começar a automatizar com eficiência.</p><div class="plan-price"><strong>R$ 197</strong><span>/mês</span></div>
+            <ul class="plan-list"><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m5 12 4 4L19 6"/></svg><span>Até 2.000 mensagens</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m5 12 4 4L19 6"/></svg><span>3.750.000 tokens</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m5 12 4 4L19 6"/></svg><span>Suporte especializado</span></li></ul>
+            <div class="install-note">+ R$ 197 de instalação no primeiro mês</div><a class="button button--secondary" href="https://wa.me/5537998201539?text=Ol%C3%A1%2C%20quero%20o%20plano%20Essencial%20do%20Hubbye%20AI" target="_blank" rel="noopener">Quero o Essencial</a>
+          </article>
+          <article class="plan plan--featured" data-reveal data-delay="2">
+            <span class="plan-badge">Para crescer</span><div class="plan-name">Start</div><p class="plan-desc">Para pequenos negócios em crescimento.</p><div class="plan-price"><strong>R$ 549</strong><span>/mês</span></div>
+            <ul class="plan-list"><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m5 12 4 4L19 6"/></svg><span>Até 8.000 mensagens</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m5 12 4 4L19 6"/></svg><span>15 milhões de tokens</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m5 12 4 4L19 6"/></svg><span>Acompanhamento mensal</span></li></ul>
+            <div class="install-note">+ R$ 197 de instalação no primeiro mês</div><a class="button button--primary" href="https://wa.me/5537998201539?text=Ol%C3%A1%2C%20quero%20come%C3%A7ar%20com%20o%20plano%20Start%20do%20Hubbye%20AI" target="_blank" rel="noopener">Começar com o Start<svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12h14M13 6l6 6-6 6"/></svg></a>
+          </article>
+          <article class="plan" data-reveal data-delay="3">
+            <span class="plan-badge plan-badge--empty" aria-hidden="true">Plano</span><div class="plan-name">Business</div><p class="plan-desc">Mais capacidade para operações de alto volume.</p><div class="plan-price"><strong>R$ 893</strong><span>/mês</span></div>
+            <ul class="plan-list"><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m5 12 4 4L19 6"/></svg><span>Até 23.000 mensagens</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m5 12 4 4L19 6"/></svg><span>45 milhões de tokens</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m5 12 4 4L19 6"/></svg><span>Suporte prioritário</span></li></ul>
+            <div class="install-note">+ R$ 197 de instalação no primeiro mês</div><a class="button button--secondary" href="https://wa.me/5537998201539?text=Ol%C3%A1%2C%20quero%20conhecer%20o%20plano%20Business%20do%20Hubbye%20AI" target="_blank" rel="noopener">Escolher Business</a>
+          </article>
+          <article class="plan" data-reveal data-delay="4">
+            <span class="plan-badge plan-badge--empty" aria-hidden="true">Plano</span><div class="plan-name">Ilimited</div><p class="plan-desc">Para agências e operações com necessidades específicas.</p><div class="plan-price plan-price--custom"><strong>Sob consulta</strong></div>
+            <ul class="plan-list"><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m5 12 4 4L19 6"/></svg><span>Capacidade personalizada</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m5 12 4 4L19 6"/></svg><span>Estrutura sob medida</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m5 12 4 4L19 6"/></svg><span>Atendimento prioritário</span></li></ul>
+            <div class="install-note">Condições definidas conforme o projeto</div><a class="button button--secondary" href="https://wa.me/5537998201539?text=Ol%C3%A1%2C%20quero%20consultar%20o%20plano%20Ilimited%20do%20Hubbye%20AI" target="_blank" rel="noopener">Falar sobre o Ilimited</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="duvidas">
+      <div class="container faq-layout">
+        <div class="faq-intro" data-reveal="left"><span class="eyebrow">Dúvidas frequentes</span><h2>O que você precisa saber antes de começar.</h2><p>Informações diretas sobre funcionamento, instalação, consumo e limites.</p></div>
+        <div class="faq-list" data-reveal="right">
+          <article class="faq-item open"><button class="faq-question" type="button" aria-expanded="true" aria-controls="faq-1"><span>O que é o Hubbye AI?</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></button><div class="faq-answer" id="faq-1"><p>É uma solução de atendimento inteligente que responde com contexto, ajuda a qualificar contatos e prepara o próximo passo para sua equipe.</p></div></article>
+          <article class="faq-item"><button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-2"><span>O que está incluído na taxa de instalação?</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></button><div class="faq-answer" id="faq-2"><p>A taxa única de R$ 197 é cobrada somente no primeiro mês e cobre a configuração e personalização da inteligência conforme o seu negócio.</p></div></article>
+          <article class="faq-item"><button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-3"><span>O que são tokens?</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></button><div class="faq-answer" id="faq-3"><p>Tokens são pequenas unidades de texto processadas pela inteligência. O consumo varia conforme o tamanho, o contexto e a complexidade de cada conversa.</p></div></article>
+          <article class="faq-item"><button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-4"><span>O que acontece se eu ultrapassar o limite do plano?</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></button><div class="faq-answer" id="faq-4"><p>Nossa equipe orientará você sobre consumo adicional ou migração para um plano mais adequado ao novo volume da operação.</p></div></article>
+          <article class="faq-item"><button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-5"><span>Como funciona o plano Ilimited?</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></button><div class="faq-answer" id="faq-5"><p>É uma estrutura personalizada para operações que precisam de maior capacidade ou condições específicas. Os detalhes são definidos após uma análise do projeto.</p></div></article>
+          <article class="faq-item"><button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-6"><span>Minha equipe continua participando do atendimento?</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></button><div class="faq-answer" id="faq-6"><p>Sim. O Hubbye AI cuida da primeira etapa, organiza o contexto e ajuda a encaminhar oportunidades para a continuidade humana quando necessário.</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section final-cta">
+      <div class="container">
+        <div class="final-cta-card" data-reveal>
+          <div class="final-cta-content"><span class="eyebrow">Próximo passo</span><h2>Seu atendimento pode ser mais rápido, organizado e inteligente.</h2><p>Converse com nossa equipe, explique sua operação e descubra qual estrutura faz mais sentido para o seu volume de mensagens.</p><a class="button button--primary" href="https://wa.me/5537998201539?text=Ol%C3%A1%2C%20quero%20descobrir%20qual%20plano%20do%20Hubbye%20AI%20%C3%A9%20ideal%20para%20minha%20empresa" target="_blank" rel="noopener">Quero encontrar o plano ideal<svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12h14M13 6l6 6-6 6"/></svg></a></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top"><a class="brand" href="#inicio" aria-label="Hubbye AI — voltar ao início"><svg class="brand-mark" viewBox="0 0 64 64" aria-hidden="true"><path d="M14.5 48.5l3.4-9.7A21 21 0 1 1 27 47.4z" fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/><path d="M24.5 31.5q3.8-6 7.6 0M37 31.5q3.8-6 7.6 0" fill="none" stroke="var(--text)" stroke-width="4" stroke-linecap="round"/><path d="M48.5 10.5l1.7-5M55 15l4-3.3M56.5 22h5" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></svg><span>hubbye</span><span class="brand-ai">AI</span></a><nav class="footer-links" aria-label="Navegação do rodapé"><a href="#solucao">Solução</a><a href="#como-funciona">Como funciona</a><a href="#demonstracao">Demonstração</a><a href="#planos">Planos</a><a href="#duvidas">Dúvidas</a></nav></div>
+      <div class="footer-bottom"><p>© 2026 Hubbye AI. Atendimento inteligente para negócios.</p><p>Tecnologia, clareza e agilidade no atendimento.</p></div>
+    </div>
+  </footer>
+
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"SoftwareApplication","name":"Hubbye AI","applicationCategory":"BusinessApplication","description":"Atendimento inteligente para responder, entender contexto e qualificar oportunidades."}
+  </script>
+
+  <script>
+    (function () {
+      'use strict';
+
+      var root = document.documentElement;
+      var body = document.body;
+      var themeToggle = document.getElementById('themeToggle');
+      var themeColor = document.querySelector('meta[name="theme-color"]');
+      var header = document.getElementById('header');
+      var menuToggle = document.getElementById('menuToggle');
+      var mobileMenu = document.getElementById('mobileMenu');
+      var menuOpenIcon = menuToggle.querySelector('.menu-open-icon');
+      var menuCloseIcon = menuToggle.querySelector('.menu-close-icon');
+
+      function syncTheme() {
+        var dark = root.getAttribute('data-theme') === 'dark';
+        themeToggle.setAttribute('aria-label', dark ? 'Ativar tema claro' : 'Ativar tema escuro');
+        if (themeColor) themeColor.setAttribute('content', dark ? '#09100c' : '#f5f8f6');
+      }
+
+      syncTheme();
+      themeToggle.addEventListener('click', function () {
+        var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+        root.setAttribute('data-theme', next);
+        try { localStorage.setItem('hubbye-theme', next); } catch (error) {}
+        syncTheme();
+      });
+
+      function syncHeader() { header.classList.toggle('scrolled', window.scrollY > 10); }
+      syncHeader();
+      window.addEventListener('scroll', syncHeader, { passive: true });
+
+      function setMenu(open) {
+        menuToggle.setAttribute('aria-expanded', String(open));
+        menuToggle.setAttribute('aria-label', open ? 'Fechar menu' : 'Abrir menu');
+        mobileMenu.setAttribute('aria-hidden', String(!open));
+        mobileMenu.classList.toggle('open', open);
+        body.classList.toggle('menu-open', open);
+        menuOpenIcon.style.display = open ? 'none' : 'block';
+        menuCloseIcon.style.display = open ? 'block' : 'none';
+      }
+
+      menuToggle.addEventListener('click', function () { setMenu(menuToggle.getAttribute('aria-expanded') !== 'true'); });
+      mobileMenu.querySelectorAll('a').forEach(function (link) { link.addEventListener('click', function () { setMenu(false); }); });
+      document.addEventListener('keydown', function (event) { if (event.key === 'Escape') setMenu(false); });
+      window.addEventListener('resize', function () { if (window.innerWidth > 1120) setMenu(false); });
+
+      var demoContent = {
+        planos: {
+          title: 'Atendimento sobre planos',
+          messages: [
+            ['user', 'Qual plano funciona para uma empresa que recebe cerca de 6.000 mensagens por mês?'],
+            ['ai', 'Para esse volume, o plano Start comporta até 8.000 mensagens e 15 milhões de tokens.'],
+            ['user', 'E existe alguma taxa no primeiro mês?'],
+            ['ai', 'Sim. A instalação custa R$ 197 apenas no primeiro mês e cobre a configuração personalizada.']
+          ],
+          intent: 'Conhecer planos', context: '6.000 mensagens/mês', next: 'Apresentar plano Start'
+        },
+        qualificacao: {
+          title: 'Qualificação de oportunidade',
+          messages: [
+            ['user', 'Quero melhorar o atendimento da minha empresa.'],
+            ['ai', 'Posso entender melhor sua operação. Qual é o volume aproximado de mensagens por mês?'],
+            ['user', 'Recebemos cerca de 18.000 mensagens e temos uma equipe comercial.'],
+            ['ai', 'Entendi. Vou organizar essas informações para sua equipe avaliar a estrutura mais adequada.']
+          ],
+          intent: 'Automatizar atendimento', context: '18.000 mensagens/mês', next: 'Avaliar plano Business'
+        },
+        encaminhamento: {
+          title: 'Preparação para a equipe',
+          messages: [
+            ['user', 'Já entendi os planos e quero conversar sobre contratação.'],
+            ['ai', 'Perfeito. Antes de encaminhar, você pretende começar com até 8.000 ou até 23.000 mensagens?'],
+            ['user', 'Até 8.000 mensagens.'],
+            ['ai', 'Certo. O interesse é no plano Start. Vou deixar o contexto organizado para a continuidade do atendimento.']
+          ],
+          intent: 'Contratar', context: 'Interesse no plano Start', next: 'Encaminhar para a equipe'
+        }
+      };
+
+      var demoTabs = Array.prototype.slice.call(document.querySelectorAll('.demo-tab'));
+      var demoPanel = document.getElementById('demo-panel');
+      var demoTitle = document.getElementById('demoTitle');
+      var demoChat = document.getElementById('demoChat');
+      var demoIntent = document.getElementById('demoIntent');
+      var demoContext = document.getElementById('demoContext');
+      var demoNext = document.getElementById('demoNext');
+
+      function renderDemo(key, focusTab) {
+        var data = demoContent[key];
+        if (!data) return;
+        demoTabs.forEach(function (tab) {
+          var selected = tab.getAttribute('data-demo') === key;
+          tab.setAttribute('aria-selected', String(selected));
+          tab.setAttribute('tabindex', selected ? '0' : '-1');
+          if (selected) demoPanel.setAttribute('aria-labelledby', tab.id);
+        });
+        demoTitle.textContent = data.title;
+        demoChat.innerHTML = '';
+        data.messages.forEach(function (message) {
+          var item = document.createElement('div');
+          item.className = 'demo-message' + (message[0] === 'ai' ? ' demo-message--ai' : '');
+          item.textContent = message[1];
+          demoChat.appendChild(item);
+        });
+        demoIntent.textContent = data.intent;
+        demoContext.textContent = data.context;
+        demoNext.textContent = data.next;
+        if (focusTab) {
+          var active = document.querySelector('.demo-tab[data-demo="' + key + '"]');
+          if (active) active.focus();
+        }
+      }
+
+      demoTabs.forEach(function (tab, index) {
+        tab.addEventListener('click', function () { renderDemo(tab.getAttribute('data-demo'), false); });
+        tab.addEventListener('keydown', function (event) {
+          if (event.key !== 'ArrowRight' && event.key !== 'ArrowLeft') return;
+          event.preventDefault();
+          var nextIndex = event.key === 'ArrowRight' ? (index + 1) % demoTabs.length : (index - 1 + demoTabs.length) % demoTabs.length;
+          renderDemo(demoTabs[nextIndex].getAttribute('data-demo'), true);
+        });
+      });
+
+      var faqItems = document.querySelectorAll('.faq-item');
+      faqItems.forEach(function (item) {
+        var button = item.querySelector('.faq-question');
+        var answer = item.querySelector('.faq-answer');
+        if (item.classList.contains('open')) answer.style.maxHeight = answer.scrollHeight + 'px';
+        button.addEventListener('click', function () {
+          var shouldOpen = !item.classList.contains('open');
+          faqItems.forEach(function (other) {
+            other.classList.remove('open');
+            other.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+            other.querySelector('.faq-answer').style.maxHeight = null;
+          });
+          if (shouldOpen) {
+            item.classList.add('open');
+            button.setAttribute('aria-expanded', 'true');
+            answer.style.maxHeight = answer.scrollHeight + 'px';
+          }
+        });
+      });
+
+      var revealItems = document.querySelectorAll('[data-reveal]');
+      if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        var observer = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: .1, rootMargin: '0px 0px -40px' });
+        revealItems.forEach(function (item) { observer.observe(item); });
+      } else {
+        revealItems.forEach(function (item) { item.classList.add('visible'); });
+      }
+    }());
+  </script>
+</body>
+</html>
